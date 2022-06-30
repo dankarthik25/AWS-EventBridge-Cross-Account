@@ -1,0 +1,52 @@
+<html>
+    
+
+<body bgcolor=#87ceeb>
+
+    <center>
+
+        <h1 style="color:whitesmoke;"><em>Simple calculator</em></h1>
+        <details>
+
+            <summary><b>Multiply</b></summary>       
+
+            <form method="POST" , action="{{url_for('home')}}">
+                <b> value 1 :  <input type="number"step="any", name='d1', placeholder="enter "> <br><br>
+                <b> value 2:  <input type="number"step="any", name='d2', placeholder="enter "> <br><br>
+                <input type="submit" , value='Multiply'>
+            </form>   
+        
+        </details>
+ 
+                                     <br>
+        <details >
+
+            <summary>Add</summary>
+                                        
+            <form method="POST" , action="{{url_for('home1')}}">
+                <b> value 1 :  <input type="number"step="any", name='d4', placeholder="enter "> <br><br>
+                <b> value 2:  <input type="number"step="any", name='d5', placeholder="enter "> <br><br>    
+            <input type="submit" , value='Add'>
+            </form>                                                                    
+        </details>
+                         
+            <br>
+
+       <details >
+
+            <summary>Subtract</summary>
+                                        
+           <form method="POST" , action="{{url_for('home2')}}">
+        <b> value 1 :  <input type="number"step="any", name='d6', placeholder="enter "> <br><br>
+        <b> value 2:  <input type="number"step="any", name='d7', placeholder="enter "> <br><br>    
+            <input type="submit" , value='subtraction'>
+     </form>                                                                 
+         </details>
+        
+        <br>
+
+    </center>
+
+</body>
+
+</html>
