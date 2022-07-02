@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS:ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:548593215839:task-definition/dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk:1"
+        LoadBalancerInfo:
+          ContainerName: "dev-Container"
+          ContainerPort: 80
