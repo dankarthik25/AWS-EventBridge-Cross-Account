@@ -4,8 +4,16 @@
   "containerDefinitions": [
     {
       "dnsSearchDomains": [],
-      "environmentFiles": [],
-      "logConfiguration": null,
+      "environmentFiles": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
       "entryPoint": [],
       "portMappings": [
         {
@@ -19,17 +27,17 @@
       "cpu": 0,
       "environment": [],
       "resourceRequirements": null,
-      "ulimits": [],
+      "ulimits": null,
       "dnsServers": [],
       "mountPoints": [],
       "workingDirectory": null,
-      "secrets": [],
+      "secrets": null,
       "dockerSecurityOptions": [],
       "memory": null,
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "548593215839.dkr.ecr.us-east-1.amazonaws.com/dev-548593215839-ecr-repository:7d4414f",
+      "image": "548593215839.dkr.ecr.us-east-1.amazonaws.com/dev-548593215839-ecr-repository:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -39,11 +47,11 @@
       "essential": true,
       "links": [],
       "hostname": null,
-      "extraHosts": [],
+      "extraHosts": null,
       "pseudoTerminal": null,
       "user": null,
       "readonlyRootFilesystem": null,
-      "dockerLabels": {},
+      "dockerLabels": null,
       "systemControls": [],
       "privileged": null,
       "name": "dev-Container"
@@ -56,14 +64,32 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:548593215839:task-definition/dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk:1",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:548593215839:task-definition/dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk:2",
   "family": "dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
     },
     {
       "targetId": null,
@@ -101,9 +127,12 @@
     "FARGATE"
   ],
   "networkMode": "awsvpc",
-  "runtimePlatform": null,
+  "runtimePlatform": {
+    "operatingSystemFamily": "LINUX",
+    "cpuArchitecture": null
+  },
   "cpu": "512",
-  "revision": 1,
+  "revision": 2,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
