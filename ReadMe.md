@@ -33,10 +33,13 @@ So we have to manually need to
 - Delete the pervious ECS Service 
 - Create new ECS Service with update policy blue-green which automatically create CodeDeploy Task 
 
+    Follow the link how to create BlueGreen-ECS-Service https://www.youtube.com/watch?v=oXBknlO-9rg&list=PLLh98oBzdb7bAuR9Nv-iGzTAxo0e1CRq3&index=4
+
 - Create ECR BlueGreen Pipeline using below artical 
 
     https://aws.plainenglish.io/aws-codepipeline-for-amazon-ecs-part-2-a-blue-green-deployment-type-c162fd73be91
 
     https://github.com/polovyivan/aws-ecs-pipeline-with-blue-green-deployment
 
+    https://catalog.us-east-1.prod.workshops.aws/workshops/4b59b9fb-48b6-461c-9377-907b2e33c9df/en-US/devopspipeline/ecswithec2/codepipeline
 
