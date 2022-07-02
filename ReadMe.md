@@ -2,8 +2,9 @@
 
 
 
-# Step 1 : Create CI/CD in own Acccount 
+## Step 1 : Create CI/CD in own Acccount 
 
+- Create AWS Resources and Task using own cloudformation template
 
 ```
 aws cloudformation deploy --template-file pipelinecf.yaml --stack-name pipeline-build --parameter-overrides Key1=Value1 Key2=Value2 --tags Key1=Value1 Key2=Value2
@@ -33,7 +34,9 @@ So we have to manually need to
 - Create new ECS Service with update policy blue-green which automatically create CodeDeploy Task 
 
 - Create ECR BlueGreen Pipeline using below artical 
+
     https://aws.plainenglish.io/aws-codepipeline-for-amazon-ecs-part-2-a-blue-green-deployment-type-c162fd73be91
+
     https://github.com/polovyivan/aws-ecs-pipeline-with-blue-green-deployment
 
 
