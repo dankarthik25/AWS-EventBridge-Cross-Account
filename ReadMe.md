@@ -1,6 +1,6 @@
 # Step for creating CI/CD Cross-Account ECS BLUE Green Deploy
 
-
+##
 
 ## Step 1 : Create CI/CD in own Acccount 
 
@@ -9,24 +9,13 @@
 ```
 aws cloudformation deploy --template-file pipelinecf.yaml --stack-name pipeline-build --parameter-overrides Key1=Value1 Key2=Value2 --tags Key1=Value1 Key2=Value2
 
-aws cloudformation update-stack-instances --stack-set-name my-awsconfig-stackset --parameter-overrides ParameterKey=MaximumExecutionFrequency,ParameterValue=TwentyFour_Hours\\,Twelve_Hours --operation-preferences FailureToleranceCount=0,MaxConcurrentCount=1 --accounts '["012345678901"]' --regions '["eu-west-1", "us-west-2"]'
-
 ```
-BranchName: master
-ContainerPort  : 80 
-RepositoryName: calci-app
-Stage: poc
+Parameters of cloudformation 
 
-```
-aws cloudformation deploy --template-file Fargate-Cluster.yaml --stack-name poc-dk-ecs-cluster --parameter-overrides Key1=Value1 Key2=Value2 --tags Key1=Value1 Key2=Value2
-
-```
-
-image uri(ecr latest):
-container-port: 
-
-
-
+- BranchName: master
+- ContainerPort  : 80 
+- RepositoryName: calci-app
+- Stage: poc
 
 Above cmd will Create following infrastructure :
 - Build Docker image , 
@@ -41,16 +30,21 @@ dev-548593215839-ecr-repository:7d4414f
 ```
 
 - Create new version of Task Defination where ecr path is latest
-    - change container image to  "dev-548593215839-ecr-repository:latest"
-    - Copy "Task definatin ARN" and "container-name" to appspec.json file
-    - Copy "Task defination JSON" to "taskdef.json"
+```
+    - Update the Task Defination 
+        - change container image to  "dev-548593215839-ecr-repository:latest"
+        - Copy "Task definatin ARN" and "container-name" to appspec.json file
+        - Copy "Task defination JSON" to "taskdef.json"
+    - Delete older version of Task Defination
 
+```
 
 
 Note: There are some limitation in cloudformation template there is no provision for roll-back update and blue-green update. 
 
 So we have to manually need to 
 
+```
 - Delete the pervious ECS Service 
 - Create new ECS Service with update policy blue-green which automatically create CodeDeploy Task
     - Delete old Service 
@@ -75,8 +69,9 @@ So we have to manually need to
     - Create pipeline 
         - Add Source code and build 
         - In Deploy select : ECS(BLUE/GREEN)
-            either select (source or build artifact) and upload the artifacts 
-
+            either select (source or build artifact) and upload the artifacts
+ 
+```
 
     Follow the link how to create BlueGreen-ECS-Service 
 
@@ -89,5 +84,10 @@ So we have to manually need to
 
     https://github.com/polovyivan/aws-ecs-pipeline-with-blue-green-deployment
 
+Extra 
 
+```
+aws cloudformation deploy --template-file Fargate-Cluster.yaml --stack-name poc-dk-ecs-cluster --parameter-overrides Key1=Value1 Key2=Value2 --tags Key1=Value1 Key2=Value2
+
+```
 
