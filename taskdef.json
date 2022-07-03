@@ -1,19 +1,11 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::548593215839:role/dev-ExecutionRole",
+  "executionRoleArn": "arn:aws:iam::548593215839:role/poc-ExecutionRole",
   "containerDefinitions": [
     {
       "dnsSearchDomains": [],
       "environmentFiles": null,
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "secretOptions": null,
-        "options": {
-          "awslogs-group": "/ecs/dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "ecs"
-        }
-      },
+      "logConfiguration": null,
       "entryPoint": [],
       "portMappings": [
         {
@@ -37,7 +29,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "548593215839.dkr.ecr.us-east-1.amazonaws.com/dev-548593215839-ecr-repository:latest",
+      "image": "548593215839.dkr.ecr.us-east-1.amazonaws.com/poc-548593215839-ecr-repository:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -54,42 +46,24 @@
       "dockerLabels": null,
       "systemControls": [],
       "privileged": null,
-      "name": "dev-Container"
+      "name": "poc-Container"
     }
   ],
   "placementConstraints": [],
   "memory": "1024",
-  "taskRoleArn": "arn:aws:iam::548593215839:role/dev-ExecutionRole",
+  "taskRoleArn": "arn:aws:iam::548593215839:role/poc-ExecutionRole",
   "compatibilities": [
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:548593215839:task-definition/dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk:2",
-  "family": "dev-548593215839-FargateECSCluster-TaskDefinition-zxLES4K294kk",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:548593215839:task-definition/poc-548593215839-FargateECSCluster-TaskDefinition-fMuGdqto6pi9:2",
+  "family": "poc-548593215839-FargateECSCluster-TaskDefinition-fMuGdqto6pi9",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
-      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "ecs.capability.execution-role-awslogs"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
     },
     {
       "targetId": null,
@@ -127,10 +101,7 @@
     "FARGATE"
   ],
   "networkMode": "awsvpc",
-  "runtimePlatform": {
-    "operatingSystemFamily": "LINUX",
-    "cpuArchitecture": null
-  },
+  "runtimePlatform": null,
   "cpu": "512",
   "revision": 2,
   "status": "ACTIVE",
