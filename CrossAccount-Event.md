@@ -4,18 +4,18 @@
 Go to developer AWS Account <<Developer-Account-Id>> where sourcecode(git code) is push or uploaded
 Follow the steps 
 - Navigate to the Rules in EventBridge 
-  -In EventBridge console Left-SideBar Under =Events=  select =Event Buses=
+  -In EventBridge console Left-SideBar Under `Events`  select `Event Buses`
   
 - Create Rule and Start the default EventBus
-  - Default *event bus* name= =default= Select =ACTION= and start =Discovery=
-  - Select =default= Event bus and create Rule
-- Create rule with  =Event Pattern=  *Rule with an event pattern*
-  - In *Sample event -optional* select
-    - *Enter my own*
-  - In *Event pattern* select
-    - *Custom pattern (JSON editor)* and past below code
-      - In repalce ="resources"= value with CodeCommit Repo *ANR*
-      - Replace <<branch-name>> with your own branch name
+  - Default **event bus** name= `default` Select `ACTION` and start `Discovery`
+  - Select `default` Event bus and create Rule
+- Create rule with  `Event Pattern`  **Rule with an event pattern**
+  - In **Sample event -optional** select
+    - **Enter my own**
+  - In **Event pattern** select
+    - **Custom pattern (JSON editor)** and past below code
+      - In repalce `"resources"` value with CodeCommit Repo *ANR*
+      - Replace << branch-name >> with your own branch name
 ```
       {
         "detail-type": ["CodeCommit Repository State Change"],
@@ -33,16 +33,16 @@ Follow the steps
 - Select the target
 - In the Select targets panel:
     - For Target, select Event bus in a  different account <<Infrastructure-Account-Id>>  or Region.
-      I have created =Eventbus= name: =mybus= here is the [link](https://us-east-1.console.aws.amazon.com/events/home?region=us-east-1#/eventbus/mybus "link1") and its ANR=arn:aws:schemas:us-east-1:548593215839:discoverer/events-event-bus-mybus
+      I have created `Eventbus` name: `mybus` here is the [link](https://us-east-1.console.aws.amazon.com/events/home?region=us-east-1#/eventbus/mybus "link1") and its `ANR=arn:aws:schemas:us-east-1:548593215839:discoverer/events-event-bus-mybus`
       
     - For Event Bus, enter the ARN =arn:aws:schemas:us-east-1:548593215839:discoverer/events-event-bus-mybus=  of the target event bus.
       
     - Keep the selected option Create a new role for this specific resource. This creates the necessary IAM permissions to allow the rule to put events on the target bus.
 	
-  [![adsfas](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png)](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png "adsfas")
+  [![adsfas](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png )](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png "adsfas")]
 
 Go to <<Infrastructure-Accound-Id>  EventBuses name : mybus
-- For EventBus : =mybus= give Permissions to <<Developer-Account-Id>> to =putEvents=
+- For EventBus : `mybus` give Permissions to <<Developer-Account-Id>> to `putEvents`
   - Replace [DEV-ACCOUNT-ID] with your AWS-Account Id
 ```
 {
@@ -77,8 +77,8 @@ Go to <<Infrastructure-Accound-Id>  EventBuses name : mybus
 ```    
 - Create Event Pattern Rules
   - paste codecommit EventBridge Rule in <<DEV-ACCOUND-ID>> to <<Infrastructure-Account-Id>>
-      - In repalce ="resources"= value with CodeCommit Repo *ANR*
-      - Replace <<branch-name>> with your own branch name   
+      - In repalce `"resources"` value with CodeCommit Repo *ANR*
+      - Replace << branch-name >> with your own branch name   
 ```      {
         "detail-type": ["CodeCommit Repository State Change"],
         "resources": ["arn:aws:codecommit:<<Region>>:<<DEV-ACCOUNT-ID>>:<<Codecommit-Repo>>"],
@@ -93,5 +93,5 @@ Go to <<Infrastructure-Accound-Id>  EventBuses name : mybus
 
 - You have CREATED RULE for EventBridge
 - You can Choose Target like CodeBuild, Codedeploy, CodePipeline
-  -Chose ECS (Bluegreen/Green) CodePipeline 
+  - Chose ECS (Bluegreen/Green) CodePipeline 
 
