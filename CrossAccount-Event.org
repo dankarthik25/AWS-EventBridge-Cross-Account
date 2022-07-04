@@ -15,7 +15,8 @@ Follow the steps
 - Create rule with  =Event Pattern=  *Rule with an event pattern*
    [[file:./images/Rule-eventPattern.png]]
   - In *Sample event -optional* select
-    - Choose *Enter my own* option 
+    - Choose *Enter my own* option
+      [[file:./images/SampleEvent.png]]
   - In *Event pattern* select
     - *Custom pattern (JSON editor)* and past below code
       - In ="resources"= replace value with CodeCommit Repo *ANR*
