@@ -23,14 +23,16 @@ Above cmd will Create following infrastructure :
 - Auto Docker build using code pipeline
 - Create ECS Cluster 
 
-Note: there is error in cloudformation templete the container-image ecr image path is wrong so need to create a new version 
+Note: there is error in cloudformation(pipelinecf.yaml) templete the container-image ecr image path is wrong so need to create a new version 
 
 ```
-dev-548593215839-ecr-repository:7d4414f
+ERROR: image uri:  dev-548593215839-ecr-repository:7d4414f
 ```
 
 - Create new version of Task Defination where ecr path is latest
 ```
+ERROR in pipelinecf.yaml:
+
     - Update the Task Defination 
         - change container image to  "dev-548593215839-ecr-repository:latest"
         - Copy "Task definatin ARN" and "container-name" to appspec.json file
@@ -42,7 +44,7 @@ dev-548593215839-ecr-repository:7d4414f
 
 Note: There are some limitation in cloudformation template there is no provision for roll-back update and blue-green update. 
 
-So we have to manually need to 
+So we have to manually need to update the ECS-Cluster
 
 ```
 - Delete the pervious ECS Service 
@@ -63,14 +65,18 @@ So we have to manually need to
             - Go to DeployGroup 
                 - online editor upload appspec.yaml 
                 - test deploy 
-        - Your Deployment is SUCESSFULL
 
+- Your Deployment is SUCESSFULL
+
+```
+```
 - Create a PIPELINE 
-    - Create pipeline 
-        - Add Source code and build 
-        - In Deploy select : ECS(BLUE/GREEN)
-            either select (source or build artifact) and upload the artifacts
- 
+    - Add Source code and build 
+    - In Deploy select : ECS(BLUE/GREEN)
+      either select (source or build artifact) and upload the artifacts
+
+
+- Your Pipeline is SUCESSFULL 
 ```
 
     Follow the link how to create BlueGreen-ECS-Service 
