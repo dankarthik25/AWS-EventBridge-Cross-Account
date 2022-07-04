@@ -10,9 +10,10 @@ Follow the steps
   - Default *event bus* name= =default= Select =ACTION= and start =Discovery=
     [[file:./images/default-eventbus.png]]
   - Under Rules section Select =default= Event bus and create Rule
-   [[file:./images/rules-create-defaultEvent-Rule.png]]
-- Create rule with  =Event Pattern=  *Rule with an event pattern*
     [[file:./images/rules-create-defaultEvent-Rule.png]]
+
+- Create rule with  =Event Pattern=  *Rule with an event pattern*
+   [[file:./images/Rule-eventPattern.png]]
   - In *Sample event -optional* select
     - Choose *Enter my own* option 
   - In *Event pattern* select
