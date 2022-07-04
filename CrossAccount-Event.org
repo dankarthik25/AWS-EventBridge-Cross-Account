@@ -38,7 +38,7 @@ Follow the steps
     - For Event Bus, enter the ARN =arn:aws:schemas:us-east-1:548593215839:discoverer/events-event-bus-mybus=  of the target event bus.
       
     - Keep the selected option Create a new role for this specific resource. This creates the necessary IAM permissions to allow the rule to put events on the target bus.
-  https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png
+  [[https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png]]
 
 Go to <<Infrastructure-Accound-Id>  EventBuses name : mybus
 - For EventBus : =mybus= give Permissions to <<Developer-Account-Id>> to =putEvents=
