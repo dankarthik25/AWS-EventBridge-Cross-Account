@@ -45,40 +45,40 @@ Note: There are some limitation in cloudformation template there is no provision
 
 So we have to manually need to update the ECS-Cluster
 
-```
-- Delete the pervious ECS Service 
-- Create new ECS Service with update policy blue-green which automatically create CodeDeploy Task
-    - Delete old Service 
-    - Create New Service 
-       - select new task which is created 
-       - seletct blue green deployment  
-            - Select blue green deploy method 
-                - AllatOnce  [ Not 10% for very 10 mints, 15 mints, 20 mints]
-        - Application load balancer 
-            - select port : 80 (NO TESTING)
-            - select load balancer : 
-                - select Target Group 
-                - Create New Target Group in drop down menu
-    - Save Service (Automaticaly Create new CodeDeploy (Application, DeployGroup)
-        - Test 
-            - Go to DeployGroup 
-                - online editor upload appspec.yaml 
-                - test deploy 
 
+> - Delete the pervious ECS Service 
+> - Create new ECS Service with update policy blue-green which automatically create CodeDeploy Task
+>    - Delete old Service 
+>    - Create New Service 
+>       - select new task which is created 
+>       - seletct blue green deployment  
+>            - Select blue green deploy method 
+>                - AllatOnce  [ Not 10% for very 10 mints, 15 mints, 20 mints]
+>        - Application load balancer 
+>            - select port : 80 (NO TESTING)
+>            - select load balancer : 
+>                - select Target Group 
+>                - Create New Target Group in drop down menu
+>    - Save Service (Automaticaly Create new CodeDeploy (Application, DeployGroup)
+>        - Test 
+>            - Go to DeployGroup 
+>                - online editor upload appspec.yaml 
+>                - test deploy 
+>
 - Your Deployment is SUCESSFULL
 
-```
-```
-- Create a PIPELINE 
-    - Add Source code and build 
-    - In Deploy select : ECS(BLUE/GREEN)
-      either select (source or build artifact) and upload the artifacts
+
+
+>- Create a PIPELINE 
+>    - Add Source code and build 
+>    - In Deploy select : ECS(BLUE/GREEN)
+>      either select (source or build artifact) and upload the artifacts
 
 
 - Your Pipeline is SUCESSFULL 
-```
 
-    Follow the link how to create BlueGreen-ECS-Service 
+
+>    Follow the link how to create BlueGreen-ECS-Service 
 
 - Create ECR BlueGreen Pipeline using below artical 
     Note: use source artifacts than build artifacts
