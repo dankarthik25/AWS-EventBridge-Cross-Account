@@ -4,18 +4,22 @@
 Go to developer AWS Account <<Developer-Account-Id>> where sourcecode(git code) is push or uploaded
 Follow the steps 
 - Navigate to the Rules in EventBridge 
-  -In EventBridge console Left-SideBar Under =Events=  select =Event Buses=
+  - In EventBridge console Left-SideBar Under =Events=  select =Event Buses=
   
 - Create Rule and Start the default EventBus
-  - Default *event bus* name= =default= Select =ACTION= and start =Discovery=    
-  - Select =default= Event bus and create Rule
+  - Default *event bus* name= =default= Select =ACTION= and start =Discovery=
+    [[file:./images/default-eventbus.png]]
+  - Under Rules section Select =default= Event bus and create Rule
+    rules-create-defaultEvent-Rule.png
 - Create rule with  =Event Pattern=  *Rule with an event pattern*
+    [[file:./images/rules-create-defaultEvent-Rule.png]]
   - In *Sample event -optional* select
     - Choose *Enter my own* option 
   - In *Event pattern* select
     - *Custom pattern (JSON editor)* and past below code
       - In ="resources"= replace value with CodeCommit Repo *ANR*
-      - Replace <<branch-name>> with your own branch name   
+      - Replace <<branch-name>> with your own branch name
+   [[file:./images/Custom-pattern-Json.png]]
             #+begin_src 
       {
         "detail-type": ["CodeCommit Repository State Change"],
@@ -28,6 +32,7 @@ Follow the steps
         }
       }
             #+end_src
+
 - You have CREATED RULE for EventBridge
 
 - Select the target
