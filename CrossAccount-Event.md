@@ -39,7 +39,7 @@ Follow the steps
       
     - Keep the selected option Create a new role for this specific resource. This creates the necessary IAM permissions to allow the rule to put events on the target bus.
 	
-  [![adsfas](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png "adsfas")](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png "adsfas")
+  [![adsfas](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png)](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png "adsfas")
 
 Go to <<Infrastructure-Accound-Id>  EventBuses name : mybus
 - For EventBus : =mybus= give Permissions to <<Developer-Account-Id>> to =putEvents=
