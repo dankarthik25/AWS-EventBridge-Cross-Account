@@ -30,16 +30,15 @@ ERROR: image uri:  dev-548593215839-ecr-repository:7d4414f
 ```
 
 - Create new version of Task Defination where ecr path is latest
-```
-ERROR in pipelinecf.yaml:
 
-    - Update the Task Defination 
-        - change container image to  "dev-548593215839-ecr-repository:latest"
-        - Copy "Task definatin ARN" and "container-name" to appspec.json file
-        - Copy "Task defination JSON" to "taskdef.json"
-    - Delete older version of Task Defination
+> ERROR in pipelinecf.yaml:
+>
+>    - Update the Task Defination 
+>        - change container image to  "dev-548593215839-ecr-repository:latest"
+>        - Copy "Task definatin ARN" and "container-name" to appspec.json file
+>        - Copy "Task defination JSON" to "taskdef.json"
+>    - Delete older version of Task Defination
 
-```
 
 
 Note: There are some limitation in cloudformation template there is no provision for roll-back update and blue-green update. 
