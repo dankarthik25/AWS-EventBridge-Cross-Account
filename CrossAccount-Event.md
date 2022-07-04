@@ -2,9 +2,10 @@
 # How to Add Eventbridge to Infrastructure AWS-Account
 
 Go to developer AWS Account <<Developer-Account-Id>> where sourcecode(git code) is push or uploaded
+
 Follow the steps 
 - Navigate to the Rules in EventBridge 
-  -In EventBridge console Left-SideBar Under `Events`  select `Event Buses`
+  - In EventBridge console Left-SideBar Under `Events`  select `Event Buses`
   
 - Create Rule and Start the default EventBus
   - Default **event bus** name= `default` Select `ACTION` and start `Discovery`
@@ -35,16 +36,26 @@ Follow the steps
     - For Target, select Event bus in a  different account <<Infrastructure-Account-Id>>  or Region.
       I have created `Eventbus` name: `mybus` here is the [link](https://us-east-1.console.aws.amazon.com/events/home?region=us-east-1#/eventbus/mybus "link1") and its `ANR=arn:aws:schemas:us-east-1:548593215839:discoverer/events-event-bus-mybus`
       
-    - For Event Bus, enter the ARN =arn:aws:schemas:us-east-1:548593215839:discoverer/events-event-bus-mybus=  of the target event bus.
+    - For Event Bus, enter the ARN `arn:aws:schemas:us-east-1:548593215839:discoverer/events-event-bus-mybus`  of the target event bus.
       
     - Keep the selected option Create a new role for this specific resource. This creates the necessary IAM permissions to allow the rule to put events on the target bus.
 	
-  [![adsfas](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png )](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png "adsfas")]
+	Here's our logo (hover to see the title text):
+
+Inline-style: 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+Reference-style: 
+![alt text][logo]
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+	
+  [![Event bus in a other account](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png )](https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/04/12/crossregion2.png )
 
 Go to <<Infrastructure-Accound-Id>  EventBuses name : mybus
 - For EventBus : `mybus` give Permissions to <<Developer-Account-Id>> to `putEvents`
   - Replace [DEV-ACCOUNT-ID] with your AWS-Account Id
-```
+``` 
 {
   "Version": "2012-10-17",
   "Statement": [{
