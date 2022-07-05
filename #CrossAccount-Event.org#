@@ -122,6 +122,7 @@ For event bus
 Example of implementation of Nested EventBride  using lamda fucntions 
 
 Has cloud formation template , and example Account A,B,C (passing event: lamda)
+
 [[https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2020/11/18/res-pol1-1024x388.png]]
 
 
