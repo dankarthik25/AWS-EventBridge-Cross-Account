@@ -102,3 +102,16 @@ Go to <<Infrastructure-Accound-Id>  EventBuses name : mybus
 - You have CREATED RULE for EventBridge
 - You can Choose Target like CodeBuild, Codedeploy, CodePipeline
   -Chose ECS (Bluegreen/Green) CodePipeline 
+
+* Source:
+For event bus
+- Visit: [[https://aws.amazon.com/blogs/compute/introducing-cross-region-event-routing-with-amazon-eventbridge/][Introducing cross-Region event routing with Amazon EventBridge]]
+  - How to setup EventBridge in Professional Way (Centrailized Way)
+  - Cross-Account Roles and Polices
+  - Cloudformation Template for creating the Cross-Account Eventbridge
+  - AWS Serverless Application Model of (AWS- Eventbridge)     
+    
+
+*Cross-Region event buses can be in the same AWS account or different AWS accounts.*
+
+*Cross-Region buses as targets works the same way as using cross-account buses as targets.*
