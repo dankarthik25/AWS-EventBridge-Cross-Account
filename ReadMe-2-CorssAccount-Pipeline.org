@@ -328,7 +328,7 @@ In Prodcution Account (Account B) change or the update policies :
         "roleArn": "arn:aws:iam::<<Account-A-Id>>:role/cross-account-role-A",
         "artifactStore": {
             "type": "S3",
-            "location": "Account-A-S3Bucket",
+            "location": "<<Account-A-S3Bucket>>",
             "encryptionKey": {
                 "id": "arn:aws:kms:eu-west-1:<<Account-A-Id>>:alias/cross-account-key",
                 "type": "KMS"
