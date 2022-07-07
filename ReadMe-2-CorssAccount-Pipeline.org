@@ -11,8 +11,8 @@ Lets consider you have two aws accounts
 - Goal is create Pipeline in Infrastructure Account and Deploy in Production Account
 ** Requirements :
 - Requirements
-  - Infrastructure Account Id : << Account-A >> 918175365727
-  - Production Account Id : << Account-B>> 548593215839
+  - Infrastructure Account Id : << Account-A >> <<Account-A-Id>>
+  - Production Account Id : << Account-B>> <<Account-B-Id>>
   - In Infrastructure Account(Account-A)
     - [Role] :  *CrossAccount-Role-of-A*
       - Trust relationship
@@ -44,7 +44,7 @@ Lets consider you have two aws accounts
         "Effect": "Allow",
         "Action": "sts:AssumeRole",
         "Resource": [
-            "arn:aws:iam::548593215839:role/*"
+            "arn:aws:iam::<<Account-B-Id>>:role/*"
         ]
     }
 }
@@ -53,9 +53,9 @@ Lets consider you have two aws accounts
       - User : root,user1
       - Permission: CrossAccountRole-of-A
       - Access to Other AWS Account : Account-B 
-    - [S3] *artifact-source* Share BuildArtifacts,Keys, Using S3 Buckets
-      - Permission : - Get, Put data in S3 Bucket by Account- B (548593215839)
-      - Read Listbucket by Account-B   (548593215839)
+    - [S3] *<<Account-A-S3Bucket>>* Share BuildArtifacts,Keys, Using S3 Buckets
+      - Permission : - Get, Put data in S3 Bucket by Account- B (<<Account-B-Id>>)
+      - Read Listbucket by Account-B   (<<Account-B-Id>>)
         #+begin_src json
 {
     "Version": "2012-10-17",
@@ -65,22 +65,22 @@ Lets consider you have two aws accounts
             "Sid": "",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::548593215839:root"
+                "AWS": "arn:aws:iam::<<Account-B-Id>>:root"
             },
             "Action": [
                 "s3:Get*",
                 "s3:Put*"
             ],
-            "Resource": "arn:aws:s3:::artifact-source/*"
+            "Resource": "arn:aws:s3:::<<Account-A-S3Bucket>>/*"
         },
         {
             "Sid": "",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::548593215839:root"
+                "AWS": "arn:aws:iam::<<Account-B-Id>>:root"
             },
             "Action": "s3:ListBucket",
-            "Resource": "arn:aws:s3:::artifact-source"
+            "Resource": "arn:aws:s3:::<<Account-A-S3Bucket>>"
         }
     ]
 }
@@ -100,7 +100,7 @@ Lets consider you have two aws accounts
                 "s3:ListBucket"
             ],
             "Resource": [
-                "arn:aws:s3:::artifact-source/*"
+                "arn:aws:s3:::<<Account-A-S3Bucket>>/*"
             ]
         }
     ]
@@ -138,7 +138,7 @@ Lets consider you have two aws accounts
                 "kms:Decrypt"
             ],
             "Resource": [
-                "arn:aws:kms:eu-west-1:918175365727:key/7bc79cce-3b1a-4a61-862e-747990aa1173"
+                "arn:aws:kms:eu-west-1:<<Account-A-Id>>:key/<<Account-A-key>>"
             ]
         }
     ]
@@ -163,7 +163,7 @@ Lets consider you have two aws accounts
       Description:
         Name:
           RoleName: *cross-account-role-A*
-          BuildArtifact location : *artifact-source*
+          BuildArtifact location : *<<Account-A-S3Bucket>>*
           Encryptionkey: *Cross-account-key*
             Type: KMS
       Stages:
@@ -200,12 +200,12 @@ Change your json file as follow
 {
     "pipeline": {
         "name": "Cross-Account-CloudFormation-CICD",
-        "roleArn": "arn:aws:iam::918175365727:role/cross-account-role-A",
+        "roleArn": "arn:aws:iam::<<Account-A-Id>>:role/cross-account-role-A",
         "artifactStore": {
             "type": "S3",
-            "location": "artifact-source",
+            "location": "<<Account-A-S3Bucket>>",
             "encryptionKey": {
-              "id": "arn:aws:kms:eu-west-1:918175365727:key/7bc79cce-3b1a-4a61-862e-747990aa1173",
+              "id": "arn:aws:kms:eu-west-1:<<Account-A-Id>>:key/<<Account-A-key>>",
                 "type": "KMS"
             }
         },
@@ -253,7 +253,7 @@ Change your json file as follow
                         "runOrder": 1,
                         "configuration": {
                             "ActionMode": "CREATE_UPDATE",
-                            "RoleArn": "arn:aws:iam::548593215839:role/CloudformationExecutionRole",
+                            "RoleArn": "arn:aws:iam::<<Account-B-Id>>:role/CloudformationExecutionRole",
                             "StackName": "Cross-Account-CloudFormation-CICD",
                             "TemplatePath": "SourceArtifact::aws-s3-cf.yaml"
                         },
@@ -263,7 +263,7 @@ Change your json file as follow
                                 "name": "SourceArtifact"
                             }
                         ],
-                        "roleArn": "arn:aws:iam::548593215839:role/cross-account-role-B",
+                        "roleArn": "arn:aws:iam::<<Account-B-Id>>:role/cross-account-role-B",
                         "region": "eu-west-1",
                         "namespace": "DeployVariables"
                     }
