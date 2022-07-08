@@ -1,10 +1,16 @@
-# Step for creating CI/CD Cross-Account ECS BLUE Green Deploy
+# Intro 
+The current project is divided into 3 sub projects 
+
+- 1. Create a **ECS BLUE GREEN CodePipeline** in own AWS Account
+- 2. **Get Access to other Account AWS** CrossAccount - **CodePipeline Implementation** 
+- 3. **Trigger the pipeline For change in code** using - **Cloud EventBridge** 
 
 ##
 
 ## Step 1 : Create CI/CD in own Acccount 
-
-- Create AWS Resources and Task using own cloudformation template
+- Create ECS Cluster using **Cloudformation**
+- Update Task Defination 
+- Create New Service 
 
 ```
 aws cloudformation deploy --template-file pipelinecf.yaml --stack-name pipeline-build --parameter-overrides Key1=Value1 Key2=Value2 --tags Key1=Value1 Key2=Value2
@@ -95,8 +101,3 @@ Extra
 aws cloudformation deploy --template-file Fargate-Cluster.yaml --stack-name poc-dk-ecs-cluster --parameter-overrides Key1=Value1 Key2=Value2 --tags Key1=Value1 Key2=Value2
 
 ```
-
-Test1
-Test2
-Test3
-Test4

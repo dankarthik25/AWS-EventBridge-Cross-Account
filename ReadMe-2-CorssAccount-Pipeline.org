@@ -6,6 +6,7 @@ Lets consider you have two aws accounts
   - All developer will push code in this account   
 - Production Account
   - The task like build, deploy should be done in the Production there is no data(source code) link between two account
+    [[file:./images/CrossAccount-Pipeline.jpeg]]
 
 [GOAL]: To create a pipeline in Infrastructure Account and the build, deploy should be done in Production, Let make it simple
 - Goal is create Pipeline in Infrastructure Account and Deploy in Production Account
@@ -32,10 +33,10 @@ Lets consider you have two aws accounts
       #+end_src
       - Role : Own AWS Account
       - Policy:
-      - S3FullAccess
-      - CodeCommitFullAccess
-      - StsAssumeRole (In Prod-Account):
-        [NOTE:] This  Role allow to communicate with Resource (roles) in other Account (account-B)
+        - S3FullAccess
+        - CodeCommitFullAccess
+        - StsAssumeRole (In Prod-Account):
+          [NOTE:] This  Role allow to communicate with Resource (roles) in other Account (account-B)
         
         #+begin_src json
 {
@@ -86,8 +87,8 @@ Lets consider you have two aws accounts
 }
       #+end_src
   - In Production Account (Account-B)
-    - [Policies ]:
-      - CrossAccount-S3-Access-Policy (To Share Pipeline-BuildArtifact Bucket to share data include (keys, buildartifacts...etc)
+    - [ *Policies* ]:
+      - *CrossAccount-S3-Access-Policy* (To Share Pipeline-BuildArtifact Bucket to share data include (keys, buildartifacts...etc)
         #+begin_src json
 {
     "Version": "2012-10-17",
@@ -106,7 +107,7 @@ Lets consider you have two aws accounts
     ]
 }
         #+end_src
-      - CrossAccount-IAM-Role-PassRole Policy : (Cloudformation) : Allow to pass the (Cloudformation)role form one account to other
+      - *CrossAccount-IAM-Role-PassRole Policy* : (Cloudformation) : Allow to pass the (Cloudformation)role form one account to other
         #+begin_src json
 {
     "Version": "2012-10-17",
@@ -114,6 +115,7 @@ Lets consider you have two aws accounts
         {
             "Effect": "Allow",
             "Action": [
+                "codecommit:*",
                 "cloudformation:*",
                 "iam:PassRole"
             ],
@@ -122,7 +124,7 @@ Lets consider you have two aws accounts
     ]
 }
         #+end_src
-      - CrossAccount-KMS-Key-Access Policy  :
+      - *CrossAccount-KMS-Key-Access Policy*  :
         Allow to Encrypt,Decrpyt,GenerateDatakey,Describekey for secure transmission and storage of data 
         #+begin_src json
 {
@@ -144,7 +146,7 @@ Lets consider you have two aws accounts
     ]
 }
         #+end_src   
-    - [Role]:  *CrossAccount-Role-of-B*
+    - [ *Role* ]:  *CrossAccount-Role-of-B*
       - Access to other AWS Account : *Account-A*
       - Policies :
         - *CrossAccount-S3-Access Policy* : To share  Pipeline-BuildArtifact, share data(key...etc), communicate with other roles, 
@@ -328,7 +330,7 @@ In Prodcution Account (Account B) change or the update policies :
         "roleArn": "arn:aws:iam::<<Account-A-Id>>:role/cross-account-role-A",
         "artifactStore": {
             "type": "S3",
-            "location": "<<Account-A-S3Bucket>>",
+            "location": "artifact-source",
             "encryptionKey": {
                 "id": "arn:aws:kms:eu-west-1:<<Account-A-Id>>:alias/cross-account-key",
                 "type": "KMS"
